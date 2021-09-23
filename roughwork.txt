@@ -1,0 +1,59 @@
+import React, { useEffect, useState } from 'react';
+import starUnfilled from "./img/star-unfilled.png";
+import starFilled from "./img/starFilled.png";
+
+let arr = [1, 2, 3, 4, 5];
+function App() {
+  const [hoverRating, setHoverRating] = useState(0);
+  const [rating, setRating] = useState(0);
+  // const [imgList, setImgList] = useState(0);
+
+  // const handleHoverIn = (e) => {
+
+    // if (e.currentTarget.getAttribute("aria-checked") === 'false'){
+    //   e.currentTarget.setAttribute("aria-checked", true);
+    // }
+    
+    // if (e.currentTarget.getAttribute("aria-checked") === 'true'){
+    //   e.currentTarget.setAttribute("src", starFilled);
+    //   console.log(e.target.dataset.info)
+    // } 
+    // if (e.currentTarget.getAttribute("aria-checked") === 'true'){
+    //   e.currentTarget.setAttribute("src", starFilled);
+    // }  
+    // !currentAriaChecked
+
+  // }
+
+    const handleHoverOut = (e) => {
+      setHoverRating(0);
+    }
+
+  // const handleHoverOut = (e) => {
+  //   setIsFilled(false);
+  // }
+  // const handleMouseOver = (e) => {
+  //   // setImgList(JSON.parse(event.target.dataset.info));
+  //   // const currentAriaChecked = (e.currentTarget.getAttribute("aria-checked") === 'false');
+  //   if (e.currentTarget.getAttribute("aria-checked") === 'false'){
+  //     e.currentTarget.setAttribute("aria-checked", true);
+  //     console.log('false');
+  //   }  
+  // };
+
+  // onMouseEnter={handleHoverIn} onMouseLeave={handleHoverOut}
+  return (
+    <section>
+      {arr.map((arrItem) => {
+        // const newIn =  <img key={arrItem - 1} onMouseEnter={handleHoverIn} src={isFilled ? starFilled : starUnfilled}></img>
+        console.log({arrItem, rating})
+        return <img key={arrItem-1} onMouseEnter={() => setHoverRating(arrItem)} onClick={() => setRating(arrItem)}  onMouseLeave={handleHoverOut} src={(arrItem <= hoverRating) || (arrItem <= rating) ? starFilled : starUnfilled}></img>
+      })}
+      <div>
+      </div>
+    </section>
+  )
+}
+
+
+export default App
